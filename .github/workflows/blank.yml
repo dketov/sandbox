@@ -1,16 +1,7 @@
-name: CI
+name: jenkins trigger
 
 on:
-  pull_request_review_comment:
-  discussion_comment:
-  pull_request_review:
   issue_comment:
-    
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
   workflow_dispatch:
 
 jobs:
@@ -20,7 +11,6 @@ jobs:
     steps:
       - name: Run a multi-line script
         run: |
-          set -x
-          env
-          cat $GITHUB_EVENT_PATH
           echo $GITHUB_EVENT_NAME
+          curl -X POST --json @$GITHUB_EVENT_PATH http://88.201.251.132/generic-webhook-trigger/invoke
+          env
