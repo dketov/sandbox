@@ -17,4 +17,7 @@ jobs:
     steps:
       - name: Run a multi-line script
         run: |
+          set -x
           env
+          cat $GITHUB_EVENT_PATH
+          echo $GITHUB_EVENT_NAME
