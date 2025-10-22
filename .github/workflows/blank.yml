@@ -12,5 +12,5 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo $GITHUB_EVENT_NAME
-          curl -X POST --json @$GITHUB_EVENT_PATH http://88.201.251.132/generic-webhook-trigger/invoke
+          curl -X POST --oauth2-bearer test --json @$GITHUB_EVENT_PATH http://88.201.251.132/generic-webhook-trigger/invoke
           env
