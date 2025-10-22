@@ -2,6 +2,10 @@ name: CI
 
 on:
   pull_request_review_comment:
+  commit_comment:
+  discussion_comment:
+  pull_request_review:
+  issue_comment:
     
   push:
     branches: [ "main" ]
