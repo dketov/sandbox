@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: if prefix
+        if: startsWith(github.ref_name, 'prefix')
+        run: echo Hello, prefix!
+
+      - name: if not prefix
+        if: ! startsWith(github.ref_name, 'prefix')
+        run: echo Hello, something!
