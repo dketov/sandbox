@@ -5,7 +5,7 @@ on:
 
 jobs:
   test-prefix:
-    name: testing as prefix
+    name: testing ${{github.ref_name}} as prefix
     if: ${{ startsWith(github.ref_name, 'prefix') }}
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +16,7 @@ jobs:
         run: echo Hello, prefix!
 
   test-non-prefix:
-    name: testing as non prefix
+    name: testing ${{github.ref_name}} as prefix
     if: ${{ ! startsWith(github.ref_name, 'prefix') }}
     runs-on: ubuntu-latest
     steps:
