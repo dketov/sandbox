@@ -1,19 +1,23 @@
-name: CI
-
 on:
   workflow_dispatch:
 
 jobs:
-  test:
+  test-prefix:
+    if: ${{ startsWith(github.ref_name, 'prefix') }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: if prefix
-        if: ${{ startsWith(github.ref_name, 'prefix') }}
+      - name: hello prefix
         run: echo Hello, prefix!
 
-      - name: if not prefix
-        if: ${{ ! startsWith(github.ref_name, 'prefix') }}
+  test-non-prefix:
+    if: ${{ ! startsWith(github.ref_name, 'prefix') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: hello
         run: echo Hello, something!
