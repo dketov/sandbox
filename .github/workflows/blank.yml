@@ -1,8 +1,11 @@
+name: CI
+
 on:
   workflow_dispatch:
 
 jobs:
   test-prefix:
+    name: testing as prefix
     if: ${{ startsWith(github.ref_name, 'prefix') }}
     runs-on: ubuntu-latest
     steps:
@@ -13,6 +16,7 @@ jobs:
         run: echo Hello, prefix!
 
   test-non-prefix:
+    name: testing as non prefix
     if: ${{ ! startsWith(github.ref_name, 'prefix') }}
     runs-on: ubuntu-latest
     steps:
