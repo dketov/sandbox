@@ -6,7 +6,8 @@ on:
 jobs:
   test-prefix:
     name: testing ${{github.ref_name}} as prefix
-    if: ${{ startsWith(github.ref_name, 'prefix') }}
+    if: ${{ startsWith(github.ref_name, 'prefix') 
+            || true == false }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout
