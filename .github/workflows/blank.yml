@@ -7,7 +7,7 @@ jobs:
   test-prefix:
     name: testing ${{github.ref_name}} as prefix
     if: ${{ startsWith(github.ref_name, 'qwe/') 
-            || true == false }}
+            || 1 == 2 }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -18,8 +18,8 @@ jobs:
 
   test-non-prefix:
     name: testing ${{github.ref_name}} as prefix
-    if: ${{ ! startsWith(github.ref_name, 'qwe') 
-            && true != false }}
+    if: ${{ (!startsWith(github.ref_name, 'qwe/'))
+            && 1 != 2 }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout
